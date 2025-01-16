@@ -18,8 +18,8 @@ endif
 SRC_JARS = jars/framework.jar$(SEP)jars/framework-deps.jar
 TST_JARS = $(SRC_JARS)$(SEP)jars/grader.jar$(SEP)jars/grader-deps.jar
 
-JAVA_SRC = $(shell find labs/*/src -type f -name "*.java")
-JAVA_TST = $(shell find labs/*/tst -type f -name "*.java")
+JAVA_SRC = $(shell find lab/src -type f -name "*.java")
+JAVA_TST = $(shell find lab/tst -type f -name "*.java")
 
 
 ################################################################################
@@ -53,7 +53,7 @@ submit.tar.gz: $(JAVA_SRC)
 	@ java -jar jars/google-java-format.jar -i $(JAVA_SRC)
 	@ echo "[tar] submit.tar.gz"
 	@ # prevent MacOS extended attrs from generating extra files
-	@ COPYFILE_DISABLE=1 tar -cvzf $@ labs/*/src
+	@ COPYFILE_DISABLE=1 tar -cvzf $@ lab/*/src
 
 
 clean:

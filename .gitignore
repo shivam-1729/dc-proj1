@@ -2,13 +2,6 @@
 build/
 deps/
 
-# Saved traces
-traces/
-*.trace
-
-# Sublime files
-*.sublime-workspace
-
 
 # IntelliJ
 .out-idea/
@@ -16,7 +9,7 @@ traces/
 .idea/tasks.xml
 .idea/dictionaries/
 .idea/copyright/
-.idea/runConfigurations.xml
+lab/.idea/
 
 
 # Python

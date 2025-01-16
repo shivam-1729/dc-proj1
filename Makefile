@@ -2,7 +2,7 @@
 .FORCE:
 
 FRAMEWORK_FILES = $(shell find framework -type f | sed 's/ /\\ /g')
-LAB_FILES = $(shell find labs -type f | sed 's/ /\\ /g')
+LAB_FILES = $(shell find lab -type f | sed 's/ /\\ /g')
 HANDOUT_FILES = $(shell find handout-files -type f | sed 's/ /\\ /g')
 
 JAR_FILES = build/libs/framework.jar \
@@ -55,7 +55,7 @@ $(LICENSE_NOTICE): build.gradle
 build/handout/: $(LAB_FILES) $(HANDOUT_FILES) $(OTHER_FILES) build/libs/ deps/formatter/google-java-format.jar $(LICENSE_NOTICE)
 	rm -rf $@
 	mkdir $@ build/handout/jars
-	$(CP) -r labs handout-files/. $(OTHER_FILES) $@
+	$(CP) -r lab handout-files/. $(OTHER_FILES) $@
 	$(CP) $(JAR_FILES) build/handout/jars
 	$(CP) deps/formatter/google-java-format.jar build/handout/jars
 	# Strip out the date from the license report for a reproducible build
