@@ -12,7 +12,7 @@ function verify() {
 		done
 }
 
-req_files=("src/.DS_Store" "src/dslabs/.DS_Store" "src/dslabs/clientserver/SimpleServer.java" "src/dslabs/clientserver/Timers.java" "src/dslabs/clientserver/Messages.java" "src/dslabs/clientserver/SimpleClient.java" "src/dslabs/kvstore/KVStore.java" "src/dslabs/atmostonce/AMOCommand.java" "src/dslabs/atmostonce/AMOResult.java" "src/dslabs/atmostonce/AMOApplication.java" "REPORT.md")
+req_files=("src/dslabs/clientserver/SimpleServer.java" "src/dslabs/clientserver/Timers.java" "src/dslabs/clientserver/Messages.java" "src/dslabs/clientserver/SimpleClient.java" "src/dslabs/kvstore/KVStore.java" "src/dslabs/atmostonce/AMOCommand.java" "src/dslabs/atmostonce/AMOResult.java" "src/dslabs/atmostonce/AMOApplication.java" "REPORT.md")
 verify "${req_files[@]}"
 if [[ $? -ne 0 ]]; then
     exit 1
@@ -20,7 +20,7 @@ fi
 
 if [ $# -eq 1 ]
 then
-	zip "${1}.zip" src/.DS_Store src/dslabs/.DS_Store src/dslabs/clientserver/SimpleServer.java src/dslabs/clientserver/Timers.java src/dslabs/clientserver/Messages.java src/dslabs/clientserver/SimpleClient.java src/dslabs/kvstore/KVStore.java src/dslabs/atmostonce/AMOCommand.java src/dslabs/atmostonce/AMOResult.java src/dslabs/atmostonce/AMOApplication.java REPORT.md
+	zip "${1}.zip" src/dslabs/clientserver/SimpleServer.java src/dslabs/clientserver/Timers.java src/dslabs/clientserver/Messages.java src/dslabs/clientserver/SimpleClient.java src/dslabs/kvstore/KVStore.java src/dslabs/atmostonce/AMOCommand.java src/dslabs/atmostonce/AMOResult.java src/dslabs/atmostonce/AMOApplication.java REPORT.md
 else
 	echo 'Please provide your GTID, eg ./submit.sh syi73'
 fi
