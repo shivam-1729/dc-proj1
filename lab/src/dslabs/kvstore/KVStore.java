@@ -8,10 +8,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 
+import java.util.HashMap;
+
 @ToString
 @EqualsAndHashCode
 public class KVStore implements Application {
 
+  private HashMap<String, String> database = new HashMap<>();
   public interface KVStoreCommand extends Command {}
 
   public interface SingleKeyCommand extends KVStoreCommand {
@@ -63,16 +66,28 @@ public class KVStore implements Application {
     if (command instanceof Get) {
       Get g = (Get) command;
       // Your code here...
+      String key = g.key();
+
+      if(database.containsKey(key)){
+        return new GetResult(database.get(key));
+      }
+
+      return new KeyNotFound();
     }
 
     if (command instanceof Put) {
       Put p = (Put) command;
       // Your code here...
+      database.put(p.key(), p.value());
+      return new PutOk();
     }
 
     if (command instanceof Append) {
       Append a = (Append) command;
       // Your code here...
+      String key = a.key();
+      database.put(key, database.getOrDefault(key, "") + a.value());
+      return new AppendResult(database.get(key));
     }
 
     throw new IllegalArgumentException();
